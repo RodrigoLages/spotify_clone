@@ -3,8 +3,8 @@ import "./style.css";
 import logo from "../../img/logo.svg";
 
 function App() {
-  const handleLogin = async (e) => {
-    alert("Login");
+  const handleRegister = async (e) => {
+    alert("Register");
   };
 
   return (
@@ -17,8 +17,8 @@ function App() {
         </div>
         <div className="Right-side">
           <div className="Form">
-            <h1>HarmonyHue</h1>
-            <form onSubmit={handleLogin}>
+            <h1>Register</h1>
+            <form onSubmit={handleRegister}>
               <input
                 className="Text-box"
                 type="text"
@@ -33,14 +33,17 @@ function App() {
                 placeholder="Password"
                 required
               />
-              <input className="Button" type="submit" value="Get In" />
+              <input
+                className="Text-box"
+                type="text"
+                name="username"
+                placeholder="Username"
+              />
+              <input className="Button" type="submit" value="Sign Up" />
             </form>
             <div className="Link-field">
               <Link to={"/"} className="Link">
-                Forgot your password?
-              </Link>
-              <Link to={"/register"} className="Link">
-                Create an account
+                Already have an account? Login
               </Link>
             </div>
           </div>
