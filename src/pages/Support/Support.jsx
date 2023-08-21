@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./style.module.css";
 import logo from "../../img/logo.svg";
 
 function App() {
-  const handleLogin = async (e) => {
-    alert("Login");
+  const handleRegister = async (e) => {
+    alert("Register");
   };
 
   return (
@@ -16,19 +16,17 @@ function App() {
           </div>
         </div>
         <div className={styles.RightSide}>
-          <div>
-            <h1 className={styles.Title}>HarmonyHue</h1>
-            <form className={styles.Form} onSubmit={handleLogin}>
+          <div className="Form">
+            <h1>Register</h1>
+            <form onSubmit={handleRegister}>
               <input className={styles.TextBox} type="text" name="email" placeholder="E-mail" required />
               <input className={styles.TextBox} type="password" name="pass" placeholder="Password" required />
-              <input className={styles.Button} type="submit" value="Get In" />
+              <input className={styles.TextBox} type="text" name="username" placeholder="Username" />
+              <input className={styles.Button} type="submit" value="Sign Up" />
             </form>
             <div className={styles.LinkField}>
               <Link to={"/"} className={styles.Link}>
-                Forgot your password?
-              </Link>
-              <Link to={"/register"} className={styles.Link}>
-                Create an account
+                Already have an account? Login
               </Link>
             </div>
           </div>
