@@ -1,35 +1,35 @@
-import { useNavigate, Link } from "react-router-dom";
 import styles from "./style.module.css";
-import logo from "../../img/logo.svg";
+import faq from "../../img/Faq.png";
 
 function App() {
-  const handleRegister = async (e) => {
-    alert("Register");
-  };
-
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
-        <div className={styles.LeftSide}>
-          <div className={styles.LogoContainer}>
-            <img src={logo} alt="" />
-          </div>
-        </div>
-        <div className={styles.RightSide}>
-          <div className="Form">
-            <h1>Register</h1>
-            <form onSubmit={handleRegister}>
-              <input className={styles.TextBox} type="text" name="email" placeholder="E-mail" required />
-              <input className={styles.TextBox} type="password" name="pass" placeholder="Password" required />
-              <input className={styles.TextBox} type="text" name="username" placeholder="Username" />
-              <input className={styles.Button} type="submit" value="Sign Up" />
-            </form>
-            <div className={styles.LinkField}>
-              <Link to={"/"} className={styles.Link}>
-                Already have an account? Login
-              </Link>
+        <div className={styles.Main}>
+          <div className={styles.OnlineSupport}>
+            <div className={styles.TextArea}>
+              <h2 className={styles.Title}>Online</h2>
+              <h2 className={styles.Title} style={{ color: "#CF769E" }}>
+                Support
+              </h2>
+              <p className={styles.Text}>
+                We need some information to offer you the best solution. Get in touch via phone, chat, email
+                and more.
+              </p>
             </div>
+            <button className={styles.Button}>Learn More</button>
           </div>
+          <img src={faq} alt="" />
+        </div>
+        <div className={styles.QuickHelp}>
+          <h3>Quick Help</h3>
+          <div className={styles.Line}></div>
+          <p className={styles.Link}>Can't reset password</p>
+          <p className={styles.Link}>I don't remember my login information</p>
+          <p className={styles.Link}>Help with logging in with Facebook</p>
+          <p className={styles.Link}>Payment methods</p>
+          <p className={styles.Link}>Price updates</p>
+          <p className={styles.Link}>Data rights and privacy settings</p>
         </div>
       </header>
     </div>
