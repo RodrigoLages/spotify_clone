@@ -1,0 +1,114 @@
+.App {
+  text-align: center;
+}
+
+.AppHeader {
+  background-color: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.NavBar {
+  background-color: #3E3460;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+}
+
+.Logo {
+  margin-left: 10px;
+}
+
+.Setas {
+  width: 113px;
+  height: 47px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 13px;
+  margin-right: auto;
+}
+
+.ButtonSeta {
+  width: 47px;
+  height: 47px;
+  border: none;
+  border-radius: 24px;
+  background-color: #271F41;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ButtonSearch {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 33px;
+}
+
+.Main {
+  width: 100%;
+  height: 1000px;
+  display: flex;
+  margin-top: 6px;
+}
+
+.BoxLeft,
+.BoxRight {
+  height: 100%;
+  background-color: #242424;
+}
+
+.BoxRight {
+  width: 80%;
+  border-top-left-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+  padding-right: 24px;
+}
+
+.BoxLeft {
+  width: 20%;
+  margin-right: 10px;
+  border-top-right-radius: 10px;
+}
+
+.PerfilImage {
+  margin-top: 20px;
+}
+
+.Title {
+  line-height: 36.31px;
+  font-size: 30px;
+  margin-right: 770px;
+  font-weight: 600;
+}
+
+.ShowButton {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.Line {
+  display: flex;
+  justify-content: space-between;
+  gap: 23px;
+}
+
+.LineText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
