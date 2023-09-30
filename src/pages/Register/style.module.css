@@ -1,103 +1,124 @@
 .App {
   text-align: center;
-}
-
-.AppHeader {
-  background-color: white;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #3e3460;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.LeftSide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.Header {
   width: 100%;
-  height: 100vh;
-}
-
-.LogoContainer {
+  box-sizing: border-box;
+  position: absolute;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 340px;
-  height: 339px;
-  border-radius: 340px;
-  background: #3e3460;
+  justify-content: space-between;
+  padding: 20px 40px;
 }
 
-.RightSide {
+.HeaderTitle {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top-left-radius: 60px;
-  border-bottom-left-radius: 60px;
-  width: 100%;
-  height: 100vh;
-  background-color: #3e3460;
+  flex-direction: row;
 }
 
-.Title {
-  margin-bottom: 66px;
-  /* color: white;
-  text-align: center;
-  font-family: Inter;
-  font-size: 40px;
+.HeaderLogo {
+  height: 50px;
+  width: 50px;
+}
+
+.HeaderName {
+  margin-left: 20px;
+  font-size: 35px;
   font-style: normal;
-  font-weight: 900;
-  line-height: normal; */
-}
-
-.Form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 26px;
-}
-
-.TextBox {
-  text-align: center;
-  width: 312px;
-  height: 48px;
-  border-radius: 80px;
-  border: none;
-  margin-bottom: 31px;
-  color: #747474;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 600;
+  font-weight: 800;
   line-height: normal;
+  align-items: center;
 }
 
-.Button {
-  width: 172px;
-  height: 36px;
-  border-radius: 10px;
-  background: #cf769e;
-  border: none;
-  color: white;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.LinkField {
+.HeaderButton {
   display: flex;
-  flex-direction: column;
-  color: black;
+  flex-direction: row;
+  align-items: center;
 }
 
-.Link {
-  margin-bottom: 20px;
-  color: #fff;
-  text-align: center;
+.HeaderText {
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-right: 16px;
+}
+
+.HeaderLogin {
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  background: #cf769e;
+  color: white;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Style for the RegistrationForm component */
+.Form {
+  padding: 20px;
+  border-radius: 5px;
+  width: 30%;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Style for labels */
+.FormField {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align labels to the left */
+  flex-wrap: wrap; /* Wrap fields to the next line if they don't fit */
+  justify-content: space-between; /* Space fields evenly within the row */
+  margin-bottom: 10px;
+}
+
+.FormGroup {
+  flex: 0 0 calc(50% - 10px); /* Set each field group to 50% width with spacing */
+  margin-right: 10px; /* Add some spacing between fields */
+}
+
+/* Style for input fields */
+.FormInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+/* Style for the submit button */
+.FormButton {
+  width: 180px;
+  height: 60px;
+  border-radius: 10px;
+  background: #cf769e;
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.Profile {
+  width: 300px;
+  height: 300px;
 }
