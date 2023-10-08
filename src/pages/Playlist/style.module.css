@@ -1,0 +1,65 @@
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: linear-gradient(0deg, #000 0%, #3e3460 100%);
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  margin-bottom: 3rem;
+}
+
+.HeaderLogo {
+  height: 50px;
+  width: 50px;
+}
+
+.HeaderName {
+  margin-left: 20px;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  align-items: center;
+}
+
+.Main {
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.Card {
+  flex: 1;
+  height: 400px;
+  width: 400px;
+}
+
+.List {
+  flex: 2;
+  margin: 0 3rem;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.List::-webkit-scrollbar {
+  width: 10px;
+}
+
+.List::-webkit-scrollbar-thumb {
+  background-color: #a0a0a0;
+}
+
+.List::-webkit-scrollbar-thumb:hover {
+  background-color: #808080;
+}

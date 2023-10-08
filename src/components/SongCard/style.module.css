@@ -1,0 +1,46 @@
+/* SongCard.module.css */
+
+.songCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.songData {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.songInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 2rem;
+}
+
+.songDetails {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  color: #808080;
+}
+
+.songPosition {
+  width: 3rem;
+  display: flex;
+  justify-content: right;
+  align-self: flex-end;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.duration {
+  font-size: 18px;
+  font-weight: bold;
+}
