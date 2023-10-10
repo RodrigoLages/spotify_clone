@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
 import logo from "../../img/logo.svg";
@@ -5,7 +6,16 @@ import profile from "../../img/addPhoto.svg";
 
 function App() {
   const navigate = useNavigate();
+
+  const [pass, setPass] = useState("");
+  const [confPass, setConfPass] = useState("");
+
   const handleRegister = async (e) => {
+    e.preventDefault();
+    if (pass !== confPass) {
+      alert("Passwords do not match");
+      return;
+    }
     navigate("/home");
   };
 
@@ -32,9 +42,8 @@ function App() {
               type="text"
               id="username"
               name="username"
-              //value=""
               onChange={null}
-              //required
+              required
             />
           </div>
           <div className={styles.FormField}>
@@ -44,22 +53,13 @@ function App() {
               type="email"
               id="email"
               name="email"
-              //value=""
               onChange={null}
-              //required
+              required
             />
           </div>
           <div className={styles.FormField}>
             <label htmlFor="dob">Date of Birth</label>
-            <input
-              className={styles.FormInput}
-              type="date"
-              id="dob"
-              name="dob"
-              // value=""
-              onChange={null}
-              //required
-            />
+            <input className={styles.FormInput} type="date" id="dob" name="dob" onChange={null} required />
           </div>
           <div className={styles.FormField}>
             <label htmlFor="password">Password</label>
@@ -68,9 +68,10 @@ function App() {
               type="password"
               id="password"
               name="password"
-              //value=""
-              onChange={null}
-              //required
+              onChange={(e) => {
+                setPass(e.target.value);
+              }}
+              required
             />
           </div>
           <div className={styles.FormField}>
@@ -80,9 +81,10 @@ function App() {
               type="password"
               id="passwordConf"
               name="passwordConf"
-              // value=""
-              onChange={null}
-              //required
+              onChange={(e) => {
+                setConfPass(e.target.value);
+              }}
+              required
             />
           </div>
           <div>
