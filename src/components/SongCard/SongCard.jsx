@@ -1,21 +1,21 @@
 import React from "react";
 import styles from "./style.module.css";
 
-const SongCard = ({ position, title, artist, album, duration }) => {
+const SongCard = ({ position, track, setSelectedTrack }) => {
   return (
-    <div className={styles.songCard}>
+    <div className={styles.songCard} onClick={() => setSelectedTrack(track)}>
       <div className={styles.songData}>
         <div className={styles.songPosition}>
           <p>{position + 1}.</p>
         </div>
         <div className={styles.songInfo}>
-          <div className={styles.title}>{title}</div>
+          <div className={styles.title}>{track.title}</div>
           <div
             className={styles.songDetails}
-          >{`${artist}\u00a0 ● \u00a0${album}`}</div>
+          >{`${track.artist}\u00a0 ● \u00a0${track.album}`}</div>
         </div>
       </div>
-      <p className={styles.duration}>{duration}</p>
+      <p className={styles.duration}>{track.duration}</p>
     </div>
   );
 };
