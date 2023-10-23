@@ -4,19 +4,34 @@ import styles from "./style.module.css";
 import logo from "../../img/logo.svg";
 import profile from "../../img/addPhoto.svg";
 
+import api from "../../services/api";
+
 function App() {
   const navigate = useNavigate();
 
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [birth, setBirth] = useState();
   const [pass, setPass] = useState("");
   const [confPass, setConfPass] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (pass !== confPass) {
-      alert("Passwords do not match");
-      return;
-    }
-    navigate("/home");
+    if (pass !== confPass) return alert("Passwords do not match");
+
+    const body = {
+      username,
+      email,
+      pass,
+      birth,
+    };
+
+    api
+      .post("/auth/register", body)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+
+    navigate("/");
   };
 
   return (
@@ -42,7 +57,9 @@ function App() {
               type="text"
               id="username"
               name="username"
-              onChange={null}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
               required
             />
           </div>
@@ -53,13 +70,24 @@ function App() {
               type="email"
               id="email"
               name="email"
-              onChange={null}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               required
             />
           </div>
           <div className={styles.FormField}>
             <label htmlFor="dob">Date of Birth</label>
-            <input className={styles.FormInput} type="date" id="dob" name="dob" onChange={null} required />
+            <input
+              className={styles.FormInput}
+              type="date"
+              id="dob"
+              name="dob"
+              onChange={(e) => {
+                setBirth(e.target.value);
+              }}
+              required
+            />
           </div>
           <div className={styles.FormField}>
             <label htmlFor="password">Password</label>

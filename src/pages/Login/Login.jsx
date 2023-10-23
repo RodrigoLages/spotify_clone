@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import styles from "./style.module.css";
 import logo from "../../img/logo.svg";
 
+import api from "../../services/api";
+
 function App() {
   const navigate = useNavigate();
 
@@ -11,20 +13,19 @@ function App() {
   const [pass, setPass] = useState("");
 
   const handleLogin = async (e) => {
-    const user = mockData.find((element) => element.user === email);
-    if (user && user.pass === pass) {
-      navigate("/home");
-    } else {
-      alert("User invalid");
-    }
-  };
+    e.preventDefault();
+    const body = { email, pass };
 
-  const mockData = [
-    {
-      user: "bigas@email.com",
-      pass: "1234",
-    },
-  ];
+    api
+      .post("/auth/login", body)
+      .then((response) => {
+        console.log(response.data);
+        navigate("/home");
+      })
+      .catch((err) => {
+        if (err.code == "ERR_BAD_REQUEST") alert(err.response.data.msg);
+      });
+  };
 
   return (
     <div className={styles.App}>
