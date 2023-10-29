@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./style.module.css";
 import logo from "../../img/logo.svg";
+import { Context } from "../../context/context";
 
 import api from "../../services/api";
 
 function App() {
   const navigate = useNavigate();
+  const { setToken, setUsername, setUserId } = useContext(Context);
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -20,10 +22,16 @@ function App() {
       .post("/auth/login", body)
       .then((response) => {
         console.log(response.data);
+        setToken(response.data.token);
+        setUsername(response.data.username);
+        setUserId(response.data.id);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("userId", response.data.id);
         navigate("/home");
       })
       .catch((err) => {
-        if (err.code == "ERR_BAD_REQUEST") alert(err.response.data.msg);
+        if (err.code === "ERR_BAD_REQUEST") alert(err.response.data.msg);
       });
   };
 

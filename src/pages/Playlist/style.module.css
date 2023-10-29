@@ -12,9 +12,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px 40px;
   margin-bottom: 3rem;
+}
+
+.Nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .HeaderLogo {
@@ -29,6 +37,55 @@
   font-weight: 800;
   line-height: normal;
   align-items: center;
+}
+
+.SearchSection {
+  display: flex;
+  flex-direction: row;
+  color: #cf769e;
+  align-items: center;
+  gap: 1rem;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.SearchContainer {
+  width: 50rem;
+  height: 2rem;
+}
+
+.ButtonSearch {
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 33px;
+}
+
+.SearchBar {
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+}
+
+.SuggestionBox {
+  list-style: none;
+  width: 50rem;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  color: #000;
+  background-color: #fff; /* Background color for suggestions */
+  border: 1px solid #ccc; /* Border style */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  max-height: 150px; /* Limit the maximum height to make it scrollable */
+  overflow-y: auto; /* Add a scrollbar if needed */
+  z-index: 1; /* Ensure it's on top of other content */
+}
+
+.SearchSuggestions {
+  padding: 10px;
+  cursor: pointer;
 }
 
 .Main {

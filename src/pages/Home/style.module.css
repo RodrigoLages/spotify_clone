@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  height: 100vh; /* Ensure the entire page height is covered */
+  display: flex;
+  flex-direction: column;
 }
 
 .AppHeader {
@@ -12,36 +15,21 @@
 }
 
 .NavBar {
-  background-color: #3E3460;
+  background-color: #3e3460;
   width: 100%;
   height: 110px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .Logo {
-  margin-left: 10px;
+  margin: 0 1rem;
 }
 
-.Setas {
-  width: 113px;
-  height: 47px;
-  display: flex;
-  justify-content: space-between;
-  margin-left: 13px;
-  margin-right: auto;
-}
-
-.ButtonSeta {
-  width: 47px;
-  height: 47px;
-  border: none;
-  border-radius: 24px;
-  background-color: #271F41;
-  cursor: pointer;
+.NavLeft {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .ButtonSearch {
@@ -55,9 +43,9 @@
 
 .Main {
   width: 100%;
-  height: 1000px;
+  height: 100%;
   display: flex;
-  margin-top: 6px;
+  margin-top: 0.5rem;
 }
 
 .BoxLeft,
@@ -67,7 +55,7 @@
 }
 
 .BoxRight {
-  width: 80%;
+  width: calc(100% - 23rem);
   border-top-left-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -77,8 +65,8 @@
 }
 
 .BoxLeft {
-  width: 20%;
-  margin-right: 10px;
+  width: 20rem;
+  margin-right: 0.5rem;
   border-top-right-radius: 10px;
 }
 
@@ -89,7 +77,6 @@
 .Title {
   line-height: 36.31px;
   font-size: 30px;
-  margin-right: 770px;
   font-weight: 600;
 }
 
@@ -111,10 +98,59 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.PlaylistCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 150px;
+  height: 200px;
+  border-radius: 5px;
+  background: linear-gradient(144deg, #7d65cc 0%, #cf769e 100%);
+}
+
+.PlaylistImg {
+  margin-top: 0.5rem;
+  height: 135px;
+  width: 135px;
+}
+
+.PlaylistTitle {
+  align-items: flex-start;
+  justify-content: left;
+  justify-self: left;
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.AddBtnDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 200px;
+}
+
+.AddBtn {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
 .CardButton {
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.Logout {
+  color: #b30000;
   cursor: pointer;
 }

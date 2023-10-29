@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./style.module.css";
 
+import iconSearch from "../../img/Search.svg";
 import SongCard from "../../components/SongCard/SongCard";
 import logo from "../../img/logo.svg";
-import playlist from "../../img/playlist.png";
+import playlistDefault from "../../img/playlist.png";
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 
-const songs = [
+import api from "../../services/api";
+
+const mockSongs = [
   {
     title: "Lightning By The Sea",
     artist: "Beshken",
@@ -95,28 +98,143 @@ const songs = [
 ];
 
 function App() {
-  //const navigate = useNavigate();
-  const [selectedTrack, setSelectedTrack] = useState(songs[0]);
+  const navigate = useNavigate();
+  const [playlist, setPlaylist] = useState({});
+  const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [selectedTrack, setSelectedTrack] = useState({});
+  const [allTracks, setAllTracks] = useState([]);
+
+  const [isSearchBarVisible, setSearchBarVisible] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+  const playlistId = useParams().id;
+
+  useEffect(() => {
+    getPlaylistTracks();
+    getAllTracks();
+  }, []);
+
+  const getPlaylistTracks = () => {
+    api
+      .get(`/playlist/${playlistId}`)
+      .then((response) => {
+        setPlaylist({
+          id: response.data.id,
+          title: response.data.title,
+          image: response.data.image,
+        });
+        setPlaylistTracks(response.data.Tracks);
+        if (response.data.Tracks.length > 0) {
+          setSelectedTrack(response.data.Tracks[0]);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setPlaylist({ id: 0, title: "LoFi Sleep/Rain" });
+        setPlaylistTracks(mockSongs);
+      });
+  };
+
+  const getAllTracks = () => {
+    api
+      .get(`/track`)
+      .then((response) => {
+        setAllTracks(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleRemoveTrack = (id) => {
+    const body = { PlaylistId: playlist.id, TrackId: id };
+
+    api
+      .delete(`/playlist/track`, { data: body })
+      .catch((err) => console.log(err));
+
+    const filtered = playlistTracks.filter((t) => t.id !== id);
+    setPlaylistTracks(filtered);
+  };
+
+  //Searchbar logic
+  const toggleSearchBar = () => {
+    setSearchBarVisible(!isSearchBarVisible);
+    setSearchValue("");
+  };
+
+  const handleTrackAdd = (track) => {
+    toggleSearchBar();
+    const body = { PlaylistId: playlist.id, TrackId: track.id };
+
+    api.post(`/playlist/track`, body).catch((err) => console.log(err));
+
+    setPlaylistTracks([...playlistTracks, track]);
+  };
 
   return (
     <div className={styles.App}>
       <div className={styles.Header}>
-        <img className={styles.HeaderLogo} src={logo} alt="" />
-        <div className={styles.HeaderName}>HarmonyHue</div>
+        <div className={styles.Nav} onClick={() => navigate("/home")}>
+          <img className={styles.HeaderLogo} src={logo} alt="" />
+          <div className={styles.HeaderName}>HarmonyHue</div>
+        </div>
+        <div className={styles.SearchSection}>
+          {isSearchBarVisible ? (
+            <div className={styles.SearchContainer}>
+              <input
+                className={styles.SearchBar}
+                type="text"
+                placeholder="Search for new songs"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+              {searchValue ? (
+                <ul className={styles.SuggestionBox}>
+                  {allTracks
+                    .filter((t) =>
+                      t.title.toLowerCase().includes(searchValue.toLowerCase())
+                    )
+                    .map((t, index) => (
+                      <li
+                        className={styles.SearchSuggestions}
+                        key={index}
+                        onClick={() => handleTrackAdd(t)}
+                      >
+                        {t.title}
+                      </li>
+                    ))}
+                </ul>
+              ) : (
+                <></>
+              )}
+            </div>
+          ) : (
+            <div style={{ cursor: "pointer" }} onClick={toggleSearchBar}>
+              <div>Add Track</div>
+            </div>
+          )}
+          <button className={styles.ButtonSearch} onClick={toggleSearchBar}>
+            <img src={iconSearch} alt="" />
+          </button>
+        </div>
       </div>
       <div className={styles.Main}>
         <div className={styles.Card}>
-          <img src={playlist} alt="" />
-          <h3>Lofi Sleep/Rain</h3>
+          <img src={playlist.image ? playlist.image : playlistDefault} alt="" />
+          <h3>{playlist.title}</h3>
           <AudioPlayer track={selectedTrack} />
         </div>
         <div className={styles.List}>
-          {songs.map((track, i) => (
+          {playlistTracks.map((track, i) => (
             <SongCard
               key={i}
               position={i}
               track={track}
               setSelectedTrack={setSelectedTrack}
+              removeTrack={handleRemoveTrack}
             />
           ))}
         </div>

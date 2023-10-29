@@ -6,7 +6,15 @@
   align-items: center;
   padding: 1rem;
   font-size: 22px;
+  gap: 2rem;
+}
+
+.Main {
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .songData {
@@ -43,4 +51,10 @@
 .duration {
   font-size: 18px;
   font-weight: bold;
+}
+
+.trashIcon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
 }
