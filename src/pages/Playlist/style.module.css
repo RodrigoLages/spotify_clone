@@ -96,6 +96,11 @@
   justify-content: space-evenly;
 }
 
+.PlaylistImg {
+  height: 400px;
+  width: 400px;
+}
+
 .Card {
   flex: 1;
   height: 400px;

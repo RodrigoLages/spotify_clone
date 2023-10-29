@@ -152,6 +152,7 @@ function App() {
             <div className={styles.Line}>
               {playlists.map((playlist, i) => (
                 <div
+                  key={i}
                   className={styles.PlaylistCard}
                   onClick={() => handleChoosePlaylist(playlist.id)}
                 >

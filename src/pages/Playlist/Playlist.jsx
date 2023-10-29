@@ -223,7 +223,11 @@ function App() {
       </div>
       <div className={styles.Main}>
         <div className={styles.Card}>
-          <img src={playlist.image ? playlist.image : playlistDefault} alt="" />
+          <img
+            className={styles.PlaylistImg}
+            src={playlist.image ? playlist.image : playlistDefault}
+            alt=""
+          />
           <h3>{playlist.title}</h3>
           <AudioPlayer track={selectedTrack} />
         </div>
