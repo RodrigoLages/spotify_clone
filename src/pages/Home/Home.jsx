@@ -113,11 +113,14 @@ function App() {
             {isEditing ? (
               <div>
                 <input
+                  className={styles.NameInput}
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
-                <button onClick={handleSaveClick}>Save</button>
+                <button className={styles.EditBtn} onClick={handleSaveClick}>
+                  Edit
+                </button>
               </div>
             ) : (
               <h4 onClick={() => setIsEditing(true)}>{username}</h4>
@@ -159,9 +162,7 @@ function App() {
                   <img
                     className={styles.PlaylistImg}
                     src={
-                      playlist.image
-                        ? `${process.env.REACT_APP_API_HOST}/${playlist.image}`
-                        : playlistDefault
+                      playlist.image ? `${process.env.REACT_APP_API_HOST}/${playlist.image}` : playlistDefault
                     }
                     alt=""
                   />
@@ -169,12 +170,7 @@ function App() {
                 </div>
               ))}
               <div className={styles.AddBtnDiv}>
-                <img
-                  className={styles.AddBtn}
-                  src={addBtn}
-                  alt=""
-                  onClick={handleAdd}
-                />
+                <img className={styles.AddBtn} src={addBtn} alt="" onClick={handleAdd} />
               </div>
             </div>
             <div className={styles.LineText}>
