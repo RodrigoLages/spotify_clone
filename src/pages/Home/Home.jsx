@@ -158,7 +158,11 @@ function App() {
                 >
                   <img
                     className={styles.PlaylistImg}
-                    src={playlist.image ? playlist.image : playlistDefault}
+                    src={
+                      playlist.image
+                        ? `${process.env.REACT_APP_API_HOST}/${playlist.image}`
+                        : playlistDefault
+                    }
                     alt=""
                   />
                   <p className={styles.PlaylistTitle}>{playlist.title}</p>
